@@ -5,6 +5,7 @@ class ListingsController < ApplicationController
   # GET /listings.json
   def index
     @listings = Listing.all
+
   end
 
   # GET /listings/1
@@ -29,6 +30,7 @@ class ListingsController < ApplicationController
     end
 
     respond_to do |format|
+     
       if @listing.save
         format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
         format.json { render :show, status: :created, location: @listing }
@@ -71,6 +73,6 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:property_name, :price, :description, :user_id)
+      params.require(:listing).permit(:property_name, :price, :description, :user_id, {images: []})
     end
 end

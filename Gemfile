@@ -2,11 +2,13 @@ source 'https://rubygems.org'
 gem 'omniauth-facebook'
 gem 'figaro'
 gem 'bootstrap-sass'
-gem 'carrierwave'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem "mini_magick"
 gem 'therubyracer'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
+
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
@@ -16,8 +18,7 @@ gem 'sqlite3'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
+
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem 'clearance'
@@ -41,7 +42,7 @@ gem 'pg'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem 'puma'
 group :development, :test do
     gem 'byebug'
     gem 'guard'
@@ -65,7 +66,7 @@ group :development do
     gem 'rubycritic'
     gem 'brakeman'
     gem 'bullet'
-    gem 'rack-mini-profiler'
+    # gem 'rack-mini-profiler'
 end
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'

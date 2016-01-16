@@ -5,7 +5,7 @@
 
   <%= form_for @user do |form| %>
     <%= render partial: '/users/form', object: form %>
-
+    <%= form.file_field :image %>
     <div class="submit-field">
       <%= form.submit %>
     </div>
@@ -13,5 +13,8 @@
     <div class="other-links">
       <%= link_to t(".sign_in"), sign_in_path %>
     </div>
+
+    
   <% end %>
 </div>
+

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160114012234) do
+ActiveRecord::Schema.define(version: 20160116051104) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,9 +23,26 @@ ActiveRecord::Schema.define(version: 20160114012234) do
     t.integer  "user_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.json     "images"
   end
 
   add_index "listings", ["user_id"], name: "index_listings_on_user_id", using: :btree
+
+  create_table "listings_tags", force: :cascade do |t|
+    t.integer  "listing_id"
+    t.integer  "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "listings_tags", ["listing_id"], name: "index_listings_tags_on_listing_id", using: :btree
+  add_index "listings_tags", ["tag_id"], name: "index_listings_tags_on_tag_id", using: :btree
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
@@ -35,10 +52,13 @@ ActiveRecord::Schema.define(version: 20160114012234) do
     t.string   "encrypted_password", limit: 128
     t.string   "confirmation_token", limit: 128
     t.string   "remember_token",     limit: 128
+    t.string   "image"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
   add_foreign_key "listings", "users"
+  add_foreign_key "listings_tags", "listings"
+  add_foreign_key "listings_tags", "tags"
 end

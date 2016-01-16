@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,8 +28,9 @@
     </div>
      <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="navbar-right">
+      
       <% if current_user %>
-        <p class="navbar-text ">Signed in as <%= current_user.email%></p>
+        <p class="navbar-text "><img src="<%= current_user.image %>"height="42" width="42"/>  Signed in as <%= current_user.email%></p>
       <%end%>
       <ul class="nav navbar-nav">
 
