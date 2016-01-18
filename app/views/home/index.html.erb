@@ -6,6 +6,43 @@
   <p>We have thousands of properties for short stays in various cities to make you vacation more affordable</p>
   <p><a class="btn btn-primary btn-lg" href="/listings" role="button">Make A Listing</a></p>
 </div>
+<table class='table table-stripped'>
+  
+  <thead>
+    <tr>
+      <th>Property name</th>
+      <th>Price</th>
+      <th>Description</th>
+      <th>User</th>
+      <th>Photos of the Property</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+   
+    <% @listings.each do |listing| %>
+      
+      <tr>
+        <td><%= listing.property_name %></td>
+        <td><%= listing.price %></td>
+        <td><%= listing.description %></td>
+        <td><%= listing.user.email %></td>
+
+        <td> <% listing.images.each_with_index do |images| %>
+      <img src="<%=listing.images[0].url %>"height="42" width="42"/></td>
+
+
+        
+      </tr>
+      <% end %>
+    <% end %>
+
+  </tbody>
+</table>
+<p>
+  <p>
+
 
 THIS IS THE INDEX HTML>>IGNORE THE FB LOGIN BELOW>>JUST FOR LEARNING
 <br>

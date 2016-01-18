@@ -4,7 +4,7 @@ require 'carrierwave/orm/activerecord'
 class User < ActiveRecord::Base
   include Clearance::User
   	attr_accessor :image
-   has_many :listings
+   has_many :listings, dependent: :destroy
    mount_uploader :image, AvatarUploader
 
    def resize_100

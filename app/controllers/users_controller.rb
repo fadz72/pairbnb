@@ -1,4 +1,5 @@
 class UsersController < Clearance::UsersController
+  before_filter :authenticate_user!, except: [:index]
 	# def user_params
 	# params.require(:user).permit(:email, :first_name, :last_name, :image)
 	# end

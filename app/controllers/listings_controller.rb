@@ -4,13 +4,16 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
-    @listings = Listing.all
+    @listings = Listing.where(user_id: current_user.id)
 
   end
-
+  # def listing/:id
+  # @listings = Listing.where(user_id: current_user.id)
+  # end
   # GET /listings/1
   # GET /listings/1.json
   def show
+
   end
 
   # GET /listings/new
@@ -31,7 +34,14 @@ class ListingsController < ApplicationController
 
     respond_to do |format|
      
+      
       if @listing.save
+
+        tags = params[:listing][:tags_collection].split(', ')
+        tags.each do |tag|
+          a = Tag.find_or_create_by(name: tag)
+          a.listings << @listing
+        end
         format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
         format.json { render :show, status: :created, location: @listing }
       else
@@ -75,4 +85,13 @@ class ListingsController < ApplicationController
     def listing_params
       params.require(:listing).permit(:property_name, :price, :description, :user_id, {images: []})
     end
+
+    def tag_params
+      params.require(:listing).permit(:tags)
+    end
 end
+
+# private
+# def post_params
+#   params.require(:post).permit(:author, :content, :all_tags)
+# end

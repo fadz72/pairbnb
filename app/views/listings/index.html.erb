@@ -2,7 +2,7 @@
 
 <h1>Listings</h1>
 
-<table>
+<table class='table table-stripped'>
   
   <thead>
     <tr>
@@ -24,14 +24,15 @@
         <td><%= listing.description %></td>
         <td><%= listing.user.email %></td>
 
-        <td> <% listing.images.each_with_index do |images| %>
-      <img src="<%=listing.images[0].url %>"height="42" width="42"/></td>
+        <td> <% listing.images.each do |image| %>
+      <img src="<%=image.url %>"height="42" width="42"/>
+      <% end %>
+    </td>
 
         <td><%= link_to 'Show', listing %></td>
         <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
         <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-      <% end %>
     <% end %>
 
   </tbody>

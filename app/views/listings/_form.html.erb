@@ -23,7 +23,12 @@
     <%= f.label :description %><br>
     <%= f.text_field :description %>
   </div>
-
+  <div class="tags">
+    <%= f.label :tags %><br>
+    <%= f.text_field :tags_collection %>
+  </div>
+  <p>
+  <p>
  
   <%= f.file_field :images, multiple: true %>
 
@@ -31,3 +36,5 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+
